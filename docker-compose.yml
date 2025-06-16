@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  node-backend:
+    build: .
+    ports:
+      - "5003:5003"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/clinichub
+      - NODE_ENV=production
+      - AI_BASE_URL=http://flask-ai:5001/api
+    depends_on:
+      - mongo
+      - flask-ai
+
+  mongo:
+    image: mongo
+    container_name: clinichub-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  flask-ai:
+    build:
+      context: ./flask-backend
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_DEBUG=True
+      - PORT=5001
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      - mongo
+
+volumes:
+  mongo_data:

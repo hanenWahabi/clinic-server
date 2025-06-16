@@ -1,0 +1,7 @@
+{"level":"info","message":"✅ Connecté à MongoDB pour créer la base de données","timestamp":"2025-05-24T09:02:52.419Z"}
+{"level":"info","message":"✅ Collections créées avec succès","timestamp":"2025-05-24T09:02:53.371Z"}
+{"level":"info","message":"Utilisateur trouvé: test34@example.com","timestamp":"2025-05-24T09:02:53.823Z"}
+{"level":"info","message":"Mot de passe en texte clair. Hachage en cours...","timestamp":"2025-05-24T09:02:53.823Z"}
+{"level":"info","message":"Mot de passe mis à jour avec succès: $2b$10$amm4GInk0l3mNtYur45D6eLSeQOR9n09p7virrgeI14umo0v5K0k6","timestamp":"2025-05-24T09:02:53.977Z"}
+{"level":"info","message":"✅ Initialisation de la base de données terminée","timestamp":"2025-05-24T09:02:53.978Z"}
+{"level":"info","message":"✅ Connexion MongoDB fermée","timestamp":"2025-05-24T09:02:53.983Z"}

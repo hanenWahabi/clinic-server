@@ -1,0 +1,12 @@
+{
+  "mongoURI": "${MONGO_URI}",
+  "jwtSecret": "${JWT_SECRET}",
+  "aiBaseUrl": "${AI_BASE_URL}",
+  "email": {
+    "service": "gmail",
+    "user": "${EMAIL_USER}",
+    "pass": "${EMAIL_PASS}",
+    "from": "${EMAIL_FROM}"
+  },
+  "frontendUrl": "${FRONTEND_URL}"
+}
