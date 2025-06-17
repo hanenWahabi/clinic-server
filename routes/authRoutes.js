@@ -52,14 +52,14 @@ router.post(
 
       const { email, password, role, adminCode, ...profileData } = req.body;
       
-      const isValidCode = adminController.validateAdminCodeUtil({ body: { code: adminCode } });
-      if (!isValidCode.data.isValid) {
-        return res.status(400).json({
-          success: false,
-          message: 'Code admin invalide',
-          code: 400,
-        });
-      }
+      // const isValidCode = adminController.validateAdminCodeUtil({ body: { code: adminCode } });
+      // if (!isValidCode.data.isValid) {
+      //   return res.status(400).json({
+      //     success: false,
+      //     message: 'Code admin invalide',
+      //     code: 400,
+      //   });
+      // }
 
       const existingUser = await User.findOne({ email });
       if (existingUser) {

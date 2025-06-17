@@ -24,10 +24,10 @@ const validateRegister = [
   body('lastName').trim().notEmpty().withMessage('Nom requis').isLength({ max: 50 }).withMessage('Nom max 50 caractères'),
   body('phone').optional().matches(/^\+\d{1,4}\d{8,}$/).withMessage('Format téléphone invalide'),
   body('address').optional().isLength({ max: 255 }).withMessage('Adresse max 255 caractères'),
-  body('adminCode')
-    .if(body('role').equals('admin'))
-    .equals('adminCLINIC')
-    .withMessage('Code admin invalide'),
+  // body('adminCode')
+  //   .if(body('role').equals('admin'))
+    // .equals('adminCLINIC')
+    // .withMessage('Code admin invalide'),
 ];
 
 // Validation rules for password reset
@@ -77,14 +77,14 @@ exports.register = async (req, res) => {
     }
 
     // Vérifier le code admin si le rôle est admin
-    if (role === 'admin' && profileData.adminCode !== 'adminCLINIC') {
-      logger.warn(`Code admin invalide pour: ${email}`);
-      return res.status(400).json({
-        success: false,
-        message: 'Code admin invalide',
-        code: 400,
-      });
-    }
+    // if (role === 'admin' ) {
+    //   logger.warn(`Code admin invalide pour: ${email}`);
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: 'Code admin invalide',
+    //     code: 400,
+    //   });
+    // }
 
     // Hacher le mot de passe
     const hashedPassword = await bcrypt.hash(password, 10);

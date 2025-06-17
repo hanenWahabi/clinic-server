@@ -233,7 +233,7 @@ mongoose.connection.on('error', (error) => {
 });
 
 // Health check - Déplacé avant les autres routes
-app.get('/api/health', (req, res) => {
+app.get('/api/v1/api/health', (req, res) => {
     logger.info('Health check request received', {
         origin: req.headers.origin,
         method: req.method,
