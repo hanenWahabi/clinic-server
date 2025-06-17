@@ -7,6 +7,7 @@ const MedicalImagingService = require('../models/imagingService');
 const Doctor = require('../models/doctor');
 const { authenticateToken, checkBlacklist } = require('../middlewares/authMiddleware');
 const logger = require('../utils/logger');
+const consultationController = require('../controllers/consultationController');
 
 // Middleware pour restreindre l'accès basé sur les rôles
 const restrictTo = (...roles) => {
@@ -181,5 +182,8 @@ router.get(
     }
   }
 );
+
+
+
 
 module.exports = router;

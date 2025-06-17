@@ -10,9 +10,9 @@ const validateCreateConsultation = [
   body('patientId').notEmpty().withMessage('Patient ID requis'),
   body('doctorId').notEmpty().withMessage('Doctor ID requis'),
   body('date').notEmpty().withMessage('Date requise'),
-  body('symptoms').notEmpty().withMessage('Symptoms requis'),
-  body('diagnosis').notEmpty().withMessage('Diagnostic requis'),
-  body('treatment').notEmpty().withMessage('Traitement requis'),
+  // body('symptoms').notEmpty().withMessage('Symptoms requis'),
+  // body('diagnosis').notEmpty().withMessage('Diagnostic requis'),
+  // body('treatment').notEmpty().withMessage('Traitement requis'),
 ];
 
 // Endpoint pour créer une consultation
@@ -33,14 +33,16 @@ router.post('/',
         });
       }
 
-      const { patientId, doctorId, date, symptoms, diagnosis, treatment } = req.body;
+      const { patientId, doctorId, date, symptoms, diagnosis, treatment, appointmentId , time} = req.body;
       const consultation = new Consultation({
         patientId,
         doctorId,
+        appointmentId,
         date,
-        symptoms,
-        diagnosis,
-        treatment
+        time,
+        // symptoms,
+        // diagnosis,
+        // treatment
       });
 
       await consultation.save();
@@ -53,6 +55,7 @@ router.post('/',
         code: 201
       });
     } catch (error) {
+      console.log("======error", error.message);
       logger.error(`Erreur lors de la création de la consultation: ${error.message}`);
       next(error);
     }
@@ -181,7 +184,7 @@ router.post('/:id/start-video',
         logger.warn(`Consultation non trouvée: ${id}`);
         return res.status(404).json({ success: false, message: 'Consultation non trouvée', code: 404 });
       }
-
+      console.log("=====consultation", consultation)
       consultation.status = 'in-progress';
       consultation.videoRoomId = `room-${id}`;
       await consultation.save();
